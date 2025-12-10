@@ -1,1 +1,3 @@
 Trello: https://trello.com/b/nqyr40jy/django-rest-framework
+
+https://trello.com/b/zIs6tKgB/django-rest-framework-2
