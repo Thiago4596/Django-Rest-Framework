@@ -7,6 +7,10 @@ from rest_framework.throttling import UserRateThrottle
 from escola.throttles import MatriculaAnonRateThrottle
 
 class EstudanteViewSet(viewsets.ModelViewSet):
+    """
+    Descrição da View:
+    - Lista de Estudantes
+    """
     queryset = Estudante.objects.all().order_by("id")
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['nome']
@@ -18,16 +22,30 @@ class EstudanteViewSet(viewsets.ModelViewSet):
 
 
 class CursoViewSet(viewsets.ModelViewSet):
+    """
+    Descri o da View:
+    - Lista de Cursos
+    """
     queryset = Curso.objects.all().order_by("id")
     serializer_class = CursoSerializer
 
 class MatriculaViewSet(viewsets.ModelViewSet):
+    """
+    Descri o da View:
+    - Lista de Matr culas
+    """
     queryset = Matricula.objects.all().order_by("id")
     serializer_class = MatriculaSerializer
-
     throttle_classes = [UserRateThrottle, MatriculaAnonRateThrottle]
+    http_method_names = ['get', 'post']
 
 class ListaMatriculasEstudante(generics.ListAPIView):
+    """
+    Descrição da View:
+    - Lista Matriculas por id de Estudante
+    Parâmetros:
+    - pk (int): O identificador primário do objeto. Deve ser um número inteiro.
+    """
     def get_queryset(self):
         queryset = Matricula.objects.filter(estudante_id=self.kwargs['pk']).order_by("id")
         return queryset
@@ -35,6 +53,12 @@ class ListaMatriculasEstudante(generics.ListAPIView):
     serializer_class = ListaMatriculasEstudanteSerializer
 
 class ListaMatriculasCurso(generics.ListAPIView):
+    """
+    Descrição da View:
+    - Lista Matriculas por id de Curso
+    Parâmetros:
+    - pk (int): O identificador primário do objeto. Deve ser um número inteiro.
+    """
     def get_queryset(self):
         queryset = Matricula.objects.filter(curso_id=self.kwargs['pk']).order_by("id")
         return queryset
