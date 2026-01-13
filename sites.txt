@@ -3,3 +3,5 @@ Trello 1: https://trello.com/b/nqyr40jy/django-rest-framework
 Trello 2:https://trello.com/b/zIs6tKgB/django-rest-framework-2
 
 Trello 3:https://trello.com/b/VPWCDzDh/django-rest-framework-3
+
+Trello 4:https://trello.com/b/hLHGiwRJ/django-rest-framework-curso-4
